@@ -1,0 +1,32 @@
+<div ng-controller="PlayerCtrl">
+    <div class="title">
+        <div class="status">
+            <i class="glyphicon glyphicon-play" ng-show="status.status=='Playing'"></i>
+            <i class="glyphicon glyphicon-pause" ng-show="status.status=='Paused'"></i>
+            <i class="glyphicon glyphicon-stop" ng-show="status.status=='Stopped'"></i>
+        </div>
+        <div class="marquee">{{status.title}}</div>
+    </div>
+    <div class="position">
+        <div class="time">{{currentTime}}</div>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="progress"
+  aria-valuemin="0" aria-valuemax="100" style="width:{{progress}}%"></div>
+        </div>
+        <div class="time">{{duration}}</div>
+    </div>
+    <ul class="control">
+        <li><button ng-click="play()"><i class="glyphicon glyphicon-play"></i></button></li>
+        <li><button ng-click="pause()"><i class="glyphicon glyphicon-pause"></i></button></li>
+        <li><button ng-click="stop()"><i class="glyphicon glyphicon-stop"></i></button></li>
+        <li><button ng-click="togglePlaylist()"><i class="glyphicon glyphicon-list"></i></button>
+            <div class="playlist" ng-show="showPlaylist">
+                <ul>
+                    <li>Track 1</li>
+                    <li>Track 2</li>
+                </ul>
+            </div>
+        </li>
+        <li style="padding-left:100%; border:0px;"> </li>
+    </ul>
+</div>
