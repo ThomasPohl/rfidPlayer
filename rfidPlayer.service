@@ -1,0 +1,14 @@
+[Unit]
+Description=rfidPlayer
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/node ./bin/www
+Restart=allways
+User=root
+Group=root
+Environment=NODE_ENV=production
+WorkingDirectory=/home/pi/projects/rfidPlayer/server
+
+[Install]
+WantedBy=multi-user.target

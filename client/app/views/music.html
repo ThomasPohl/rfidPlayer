@@ -1,0 +1,34 @@
+
+<div id="musicOverview">
+    <ng-form name="musicForm">
+    <select id="musicArtist" size="10" ng-model="selectedArtist">
+        <option ng-repeat="(artist, data) in music">{{artist}}</option>
+    </select>
+    <select id="musicAlbum" size="10" ng-model="selectedAlbum">
+            <option ng-repeat="(album, data) in music[selectedArtist]">{{album}}</option>
+    </select>
+    <select id="musicTitle" size="10" ng-model="selectedTitle">
+        <option ng-repeat="(title,data) in music[selectedArtist][selectedAlbum]">{{title}}</option>
+    </select>
+    </from>
+</div>
+
+<div class="title" ng-show="getTitle()">
+    <p>Filename: {{getTitle().filename}}</p>
+    <p>Artist: {{getTitle().artist}}</p>
+    <p>Album: {{getTitle().album}}</p>
+    <p>Title: {{getTitle().title}}</p>
+    <!--<p><img ng-src="data:image/JPEG;base64,{{arrayBufferToBase64(getTitle().image.data)}}" width="100"></p>-->
+    <p>
+        <img ng-show="hasTag(getTitle())" src="images/Sensor-64-green.png" ng-click="startAssoc()"></img>
+        <img ng-hide="hasTag(getTitle())" src="images/Sensor-64-gray.png" ng-click="startAssoc()"></img>
+    </p>
+</div>
+
+<div class="modal" ng-show="assocMode">
+      <!-- Modal content -->
+  <div class="modal-content">
+    <p>Please put the rfid-tag on the reader...</p>
+    <img src="images/RFID Sensor-96.png"></img>
+  </div>
+</div>
